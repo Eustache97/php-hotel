@@ -48,33 +48,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
-    <?php
+<table class="table table-striped-columns">
+  <thead>
+    <tr>
+      <th scope="col">#Hotel</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Parking</th>
+      <th scope="col">Vote</th>
+      <th scope="col">Distance to center</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php 
         for($i = 0; $i < count($hotels); $i++){
-            $cur_hotel = $hotels[$i]; ?>
-            <ul>
-                <?php 
-                        foreach ($cur_hotel as $key => $value) {?>
-                        <li>
-                            <?php
-                                echo $key.":";
-                                if($key === 'parking'){
-                                    if($value){
-                                        echo "si";
-                                    }else{
-                                        echo "no";
-                                    }
-                                }else{
-                                 echo $value;
-  
-                                }
-                                 echo "<br />"; 
-                            ?>
-                        </li>
-                   <?php }?>
-            </ul>
-       <?php }?>  
+          $cur_hotel = $hotels[$i]; 
+    ?>
+     <tr>
+      <th scope="row"><?php echo $i + 1;?></th>
+      <?php 
+            foreach ($cur_hotel as $key => $value) {
+        ?>
+        <td>
+            <?php
+                if($key === 'parking'){
+                    if($value){
+                        echo "si";
+                    }else{
+                        echo "no";
+                    }
+                }else{
+                    echo $value;
+                } 
+            ?>
+        </td>
+        <?php }?>
+    </tr>
+    <?php }?>
+  </tbody>
+</table>
 </body>
 </html>
